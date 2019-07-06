@@ -1,16 +1,16 @@
 FROM ubuntu:18.04
 
+ARG PASSWORD_ROOT=passwordRoot
+ARG PASSWORD_USER_SSH=passwordUserSSH
+ARG NEW_PASSPHRASE=newPassphrase
+
 RUN apt-get update && \
     apt-get install -y openssh-server && \
     rm -rf /var/lib/apt/list/*
 
-ENV PASSWORD_ROOT='passwordRoot'
-ENV PASSWORD_USER_SSH='passwordUserSSH'
-ENV NEW_PASSPHRASE='new_passphrase'
-
 RUN mkdir /var/run/sshd
-RUN echo "root:""${PASSWORD_USER_SSH}" | chpasswd
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN echo "root:""${PASSWORD_ROOT}" | chpasswd
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
 
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 
