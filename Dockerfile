@@ -23,6 +23,8 @@ USER app
 RUN mkdir -p /home/app/.ssh && ssh-keygen -q  -f /home/app/.ssh/id_rsa -N '${NEW_PASSPHRASE}'
 
 USER root
+RUN mkdir -p /root/.ssh && ssh-keygen -q  -f /root/.ssh/id_rsa -N '${NEW_PASSPHRASE}'
+
 EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
