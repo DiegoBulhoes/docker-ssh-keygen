@@ -14,7 +14,7 @@ PASSWORD_USER_SSH='passwordUserSSH'
 NEW_PASSPHRASE='newPassphrase'
 ```
 
-Exemplo de build passando os argumentos e valores de acordo com a necessidade da aplicação. O dockerfile pode ser obtido nesse [link](https://github.com/DiegoBulhoes/docker-ssh-keygen)
+Exemplo de build passando os argumentos e valores de acordo com a necessidade da aplicação. O dockerfile pode ser obtido nesse [link](https://github.com/DiegoBulhoes/docker-ssh-keygen/blob/master/Dockerfile)
 
 ```
 docker build . --build-arg PASSWORD_ROOT='passwordRoot --build-arg PASSWORD_USER_SSH='passwordUserSSH --build-arg NEW_PASSPHRASE='newPassphrase' -t my_ssh
